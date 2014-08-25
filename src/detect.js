@@ -10,7 +10,7 @@
       osx = !!ua.match(/\(Macintosh\; Intel /),
       ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
       ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/),
-      iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+      iphone = ua.match(/(iPhone\sOS)\s([\d_]+)/),
       webos = ua.match(/(webOS|hpwOS)[\s\/]([\d.]+)/),
       wp = ua.match(/Windows Phone ([\d.]+)/),
       touchpad = webos && ua.match(/TouchPad/),
@@ -35,7 +35,7 @@
     if (browser.webkit = !!webkit) browser.version = webkit[1]
 
     if (android) os.android = true, os.version = android[2]
-    if (iphone && !ipod) os.ios = os.iphone = true, os.version = iphone[2].replace(/_/g, '.')
+    if (iphone) os.ios = os.iphone = true, os.version = iphone[2].replace(/_/g, '.')
     if (ipad) os.ios = os.ipad = true, os.version = ipad[2].replace(/_/g, '.')
     if (ipod) os.ios = os.ipod = true, os.version = ipod[3] ? ipod[3].replace(/_/g, '.') : null
     if (wp) os.wp = true, os.version = wp[1]
